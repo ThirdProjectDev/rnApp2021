@@ -8,30 +8,31 @@ import { Card } from 'react-native-elements'
 
 const HomeScreen = ({navigation}) => {
 
+    const StoryTitles = [{title: "Jungle Book"}, {title: "Jane Eyre"}, {title: "Little Princess"}]
+
     const renderCard = () => (
-        <TouchableOpacity
-            onLongPress={()=> navigation.navigate('Article_screen',{
-                id: 'vdhjbd',
-                postData: {title:'sjsjs',content:''}
-            })}
-        >
-            <Card>
-                <Card.Title style={styles.cardTitle}>
-                    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </Text>
-                </Card.Title>
-                <Card.Divider/>
-                <Text style={styles.cardText}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                </Text>
-            </Card>
-        </TouchableOpacity>
+
+        StoryTitles.map((item) => (
+            <TouchableOpacity
+                // key = {item.title}
+                onPress={()=> navigation.navigate('Article_screen',{
+                    id: 'vdhjbd',
+                    postData: {title:'sjsjs',content:''}
+                })}
+            >
+                <Card>
+                    <Card.Title style={styles.cardTitle}>
+                        <Text>{item.title}</Text>
+                    </Card.Title>
+                </Card>
+            </TouchableOpacity>
+        ))
+
     )
 
 
     return(
         <ScrollView>
-            {renderCard()}
-            {renderCard()}
             {renderCard()}
         </ScrollView>
     )
