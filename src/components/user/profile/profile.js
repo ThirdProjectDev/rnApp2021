@@ -5,12 +5,12 @@ import { Appbar, TextInput, Divider, Button, Title }from 'react-native-paper'
 
 import UserData from './userData';
 
-const ProfileScreen = () => {
+const SettingsScreen = () => {
     return(
         <ScrollView>
             <Appbar.Header>
                 <Appbar.BackAction onPress={()=> alert('back')}/>
-                <Appbar.Content title="Profile" subtitle="Redwire"/>
+                <Appbar.Content title="Settings" subtitle="Redwire"/>
             </Appbar.Header>
             <View style={{padding:20}}>
                 <Title>Your user Login data</Title>
@@ -40,4 +40,4 @@ const ProfileScreen = () => {
     )
 }
 
-export default ProfileScreen;
+export default SettingsScreen;
