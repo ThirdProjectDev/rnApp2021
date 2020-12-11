@@ -1,39 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
     View, Text, 
     Button, ScrollView,
-    TouchableOpacity,StyleSheet 
+    TouchableOpacity,StyleSheet,
+    ActivityIndicator 
 } from 'react-native';
-import { Card } from 'react-native-elements'
-
+import { Card } from 'react-native-elements';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStories,getMoreStories } from '../../../store/actions';
+ 
 const HomeScreen = ({navigation}) => {
+    const [loadingMore,setLoadingMore] = useState(false);
+    const stories = useSelector(state => state.stories);
+    const dispatch = useDispatch();
 
-    const StoryTitles = [{title: "Jungle Book"}, {title: "Jane Eyre"}, {title: "Little Princess"}]
+    useEffect(()=>{
+        dispatch(getStories())
+    },[dispatch])
+
 
     const renderCard = () => (
-
-        StoryTitles.map((item) => (
+        stories.posts.map((item)=>(
             <TouchableOpacity
-                // key = {item.title}
+                key={item.id}
                 onPress={()=> navigation.navigate('Article_screen',{
-                    id: 'vdhjbd',
-                    postData: {title:'sjsjs',content:''}
+                    id: item.id,
+                    postData: item
                 })}
             >
                 <Card>
                     <Card.Title style={styles.cardTitle}>
                         <Text>{item.title}</Text>
                     </Card.Title>
+                    <Card.Divider/>
+                    <Text style={styles.cardText}>
+                        {item.excerpt}
+                    </Text>
                 </Card>
             </TouchableOpacity>
         ))
-
     )
+
+    const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
+        const paddingToBottom = 50;
+        return layoutMeasurement.height + contentOffset.y >=
+        contentSize.height - paddingToBottom;
+    }
 
 
     return(
-        <ScrollView>
-            {renderCard()}
+        <ScrollView
+            onScroll={({nativeEvent})=> {
+                if(isCloseToBottom(nativeEvent)){
+                   if(!loadingMore){
+                        setLoadingMore(true);
+                        dispatch(getMoreStories(stories)).then(()=>{
+                            setLoadingMore(false);
+                        })
+                   }
+                }
+            }}
+            scrollEventThrottle={400}
+        >
+            { stories && stories.posts ?
+                renderCard()
+                :null
+            }
+
+            {loadingMore ?
+                <View style={{marginTop:50, marginBottom:50}}>
+                    <ActivityIndicator color="black"/>
+                </View>
+            :null}
         </ScrollView>
     )
 }

@@ -5,8 +5,9 @@ import { Colors,LogoText }from '../utils/tools';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
-import StoriesScreen from '../components/home/videos';
-import StoryScreen from '../components/home/videos/video';
+
+import VideosScreen from '../components/home/videos';
+import VideoScreen from '../components/home/videos/video';
 import HomeScreen from '../components/home/articles';
 import ArticleScreen from '../components/home/articles/article'
 
@@ -39,14 +40,14 @@ export const screenOptions = {
     headerTitle:()=> <LogoText style={{fontSize:25}}/>
 }
 
-export const StoriesStack = () => (
+export const VideosStack = () => (
     <Stack.Navigator
         screenOptions={{
             ...screenOptions
         }}
-        initialRouteName="Story_screen"
+        initialRouteName="Videos_screen"
     >
-        <Stack.Screen name="Story_screen" component={StoriesScreen} options={{
+        <Stack.Screen name="Videos_screen" component={VideosScreen} options={{
             headerLeft:(props)=> <LeftIcon/>,
         }}/>
     </Stack.Navigator>

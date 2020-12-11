@@ -12,10 +12,10 @@ import { Colors } from './utils/tools';
 
 const Drawer = createDrawerNavigator();
 
-import { Stack, HomeStack, StoriesStack, screenOptions } from './routes/stacks';
+import { Stack, HomeStack, VideosStack, screenOptions } from './routes/stacks';
 import AuthScreen from './components/auth';
-import SettingsScreen from './components/user/profile/profile';
-import StoryScreen from './components/home/videos/video';
+import ProfileScreen from './components/user/profile/profile';
+import VideoScreen from './components/home/videos/video';
 import Splash from './components/auth/splash';
 
 
@@ -25,8 +25,8 @@ const MainDrawer = () => (
     drawerStyle={{backgroundColor: Colors.black}}
   >
     <Drawer.Screen name="Home" component={HomeStack}/>
-    <Drawer.Screen name="Stories" component={StoriesStack}/>
-    <Drawer.Screen name="Settings" component={SettingsScreen}/>
+    <Drawer.Screen name="Videos" component={VideosStack}/>
+    <Drawer.Screen name="Profile" component={ProfileScreen}/>
   </Drawer.Navigator>
 )
 
@@ -54,8 +54,8 @@ class App extends Component{
                 options={{ headerShown:false}}
               />
               <Stack.Screen 
-                name="StoryScreen" 
-                component={ StoryScreen }
+                name="VideoScreen" 
+                component={ VideoScreen }
                 options={{
                   ...screenOptions,
                   headerBackTitleVisible:false

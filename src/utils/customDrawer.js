@@ -10,16 +10,17 @@ import { logoutUser } from '../store/actions'
 const SideDrawerCustom = (props) => {
     const dispatch = useDispatch();
     const mainOptions = [
-        { title:'Home',location:"Home" },
-        // { title: 'Stories',location:"Stories" },
-        { title:'Settings',location: "Settings" }
+        { title:'Stories',location:"Home" },
+        { title:'FAQ',location:"Videos" },
+        { title:'Profile',location:"Profile" },
+        { title:'Settings',location:"Settings" }
     ]
 
     return(
         <DrawerContentScrollView {...props}>
             <View>
                 <LogoText
-                    style={{fontSize:40,textAlign:'center',color:Colors.white}}
+                    style={{fontSize:40,textAlign:'center',color:Colors.black2}}
                 />
             </View>
             { mainOptions.map((item)=>(

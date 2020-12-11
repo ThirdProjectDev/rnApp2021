@@ -3,9 +3,9 @@ import { render } from 'react-dom';
 import { View, Text, Button, ScrollView, ActivityIndicator,StyleSheet } from 'react-native';
 import { Tile } from 'react-native-elements';
 
-const StoriesScreen = ({navigation}) => {
+const VideosScreen = ({navigation}) => {
 
-    const renderStories = () => (
+    const renderVideos = () => (
         <Tile
             imageSrc={{uri:'https://picsum.photos/200/300'}}
             title='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
@@ -13,7 +13,7 @@ const StoriesScreen = ({navigation}) => {
             contentContainerStyle={styles.contentContainerStyle}
             containerStyle={styles.containerStyle}
             titleStyle={{fontSize:15}}
-            onPress={()=> navigation.navigate('StoryScreen',{
+            onPress={()=> navigation.navigate('VideoScreen',{
                 id:'hsdvhsjdv',
                 postData:{}
             })}
@@ -24,7 +24,7 @@ const StoriesScreen = ({navigation}) => {
     return(
         <ScrollView>
             <View style={{padding:20}}>
-                {renderStories()}
+                {renderVideos()}
             </View>
             {/* <Button
                 title="see article"
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
 
 
 
-export default StoriesScreen;
+export default VideosScreen;
