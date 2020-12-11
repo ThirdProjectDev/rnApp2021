@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import ContentShow from '../../../../utils/contentShow';
 import Youtube from 'react-native-youtube';
 
-const StoryScreen = () => {
+const VideoScreen = () => {
     return(
         <ScrollView>
             <View>
@@ -24,4 +24,4 @@ const StoryScreen = () => {
     )
 }
 
-export default StoryScreen;
+export default VideoScreen;
