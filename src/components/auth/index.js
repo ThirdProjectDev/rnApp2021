@@ -8,6 +8,7 @@ import { useFocusEffect } from '@react-navigation/native'
 
 import { Input, Button } from 'react-native-elements';
 import {LogoText, Colors, showToast } from '../../utils/tools';
+import Logo from "./Logo";
 
 const AuthScreen = () => {
     const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const AuthScreen = () => {
     return(
         <ScrollView contentContainerStyle={styles.contentContainer}>
             <View style={styles.container}>
-                <LogoText/>
+                <Logo/>
                 <Formik
                     initialValues={{ email:'',password:''}}
                     validationSchema={Yup.object({
