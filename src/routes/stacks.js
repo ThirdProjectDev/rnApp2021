@@ -30,9 +30,9 @@ const LeftIcon = () => {
 
 export const screenOptions = {
     headerTitleAlign:'center',
-    headerTintColor: Colors.red,
+    headerTintColor: Colors.white,
     headerStyle:{
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.darkGrey2,
         borderBottomWidth:6,
         borderBottomColor:Colors.red,
         height: Platform.OS === 'ios' ? 110 : 60

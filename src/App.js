@@ -18,7 +18,6 @@ import ProfileScreen from './components/user/profile/profile';
 import VideoScreen from './components/home/videos/video';
 import Splash from './components/auth/splash';
 
-
 const MainDrawer = () => (
   <Drawer.Navigator
     drawerContent={(props) => <SideDrawerCustom {...props}/>}
