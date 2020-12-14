@@ -8,7 +8,12 @@ export const Colors = {
     'black2':'#272930',
     'black3':'#1a1a21',
     'grey':'#c8c8c8',
-    'red':'#d74444'
+    'red':'#7c2717',
+    'darkGrey':'#473d38',
+    'lightBrown':'#D9C0AB',
+    'middleBrown1':'#A36F4C',
+    'middleBrown2':'#A25B2C',
+    'darkBrown':'#4A3B2C'
 }
 
 export const LogoText = (props) => (
