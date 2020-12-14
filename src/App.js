@@ -22,7 +22,7 @@ import Splash from './components/auth/splash';
 const MainDrawer = () => (
   <Drawer.Navigator
     drawerContent={(props) => <SideDrawerCustom {...props}/>}
-    drawerStyle={{backgroundColor: Colors.black}}
+    drawerStyle={{backgroundColor: Colors.darkGrey2}}
   >
     <Drawer.Screen name="Home" component={HomeStack}/>
     <Drawer.Screen name="Videos" component={VideosStack}/>

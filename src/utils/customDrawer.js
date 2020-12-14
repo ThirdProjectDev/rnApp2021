@@ -46,9 +46,9 @@ const SideDrawerCustom = (props) => {
 
 const styles = StyleSheet.create({
     drawerButon:{
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.darkGrey2,
         borderBottomWidth:1,
-        borderBottomColor: Colors.black2,
+        borderBottomColor: Colors.darkGrey,
     }
 })
 
