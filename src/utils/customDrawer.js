@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { logoutUser } from '../store/actions';
 import DrawerLogo from './drawerLogo.js';
 
-
 const SideDrawerCustom = (props) => {
     const dispatch = useDispatch();
     const mainOptions = [
@@ -51,6 +50,5 @@ const styles = StyleSheet.create({
         borderBottomColor: Colors.darkGrey,
     }
 })
-
 
 export default SideDrawerCustom;

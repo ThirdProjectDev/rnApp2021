@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     },
     inputContainerStyle:{
       borderBottomWidth:3,
-      borderBottomColor: Colors.black  
+      borderBottomColor: Colors.darkGrey  
     }
 })
 
