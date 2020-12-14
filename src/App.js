@@ -32,13 +32,14 @@ const MainDrawer = () => (
 
 class App extends Component{
   state = {
-    loading:true
+    loading: false
   }
 
   componentDidMount(){
-    this.props.dispatch(autoSignIn()).then(()=>{
-      this.setState({loading:false})
-    })
+    this.props.dispatch(autoSignIn())
+      // .then(()=>{
+      // this.setState({loading:false})
+      // })
   }
 
 
