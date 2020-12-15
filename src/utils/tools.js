@@ -20,7 +20,7 @@ export const Colors = {
 export const LogoText = (props) => (
     <Text
         style={{
-            fontFamily:'EastSeaDokdo-Regular',
+            fontFamily:'Parisienne-Regular',
             color:'#ffffff',
             fontSize:50,
             ...props.style
