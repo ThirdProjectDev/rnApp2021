@@ -8,6 +8,7 @@ import { useFocusEffect } from '@react-navigation/native'
 
 import { Input, Button } from 'react-native-elements';
 import {LogoText, Colors, showToast } from '../../utils/tools';
+import Logo from "./Logo";
 
 const AuthScreen = () => {
     const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const AuthScreen = () => {
     return(
         <ScrollView contentContainerStyle={styles.contentContainer}>
             <View style={styles.container}>
-                <LogoText/>
+                <Logo/>
                 <Formik
                     initialValues={{ email:'',password:''}}
                     validationSchema={Yup.object({
@@ -61,7 +62,7 @@ const AuthScreen = () => {
                     <>
                         <Input
                             placeholder="Email"
-                            leftIcon={{ type:'antdesign',name:'mail',color: Colors.white}}
+                            leftIcon={{ type:'antdesign',name:'mail',color: Colors.lightBrown}}
                             inputStyle={styles.inputStyle}
                             placeholderTextColor={Colors.grey}
                             inputContainerStyle={styles.inputContainerStyle}
@@ -77,7 +78,7 @@ const AuthScreen = () => {
                         <Input
                             placeholder="Password"
                             secureTextEntry={securEntry}
-                            leftIcon={{ type:'antdesign',name:'lock',color: Colors.white}}
+                            leftIcon={{ type:'antdesign',name:'lock',color: Colors.lightBrown}}
                             inputStyle={styles.inputStyle}
                             placeholderTextColor={Colors.grey}
                             inputContainerStyle={styles.inputContainerStyle}
@@ -98,7 +99,7 @@ const AuthScreen = () => {
                         <Button
                             title={ formType ? 'Register':'Login'}
                             buttonStyle={{
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.darkGrey,
                                 marginTop:20
                             }}
                             titleStyle={{ width:'100%'}}
@@ -127,7 +128,7 @@ const AuthScreen = () => {
 const styles = StyleSheet.create({
     contentContainer:{
         flex:1,
-        backgroundColor:Colors.red
+        backgroundColor:Colors.middleBrown1
     },
     container:{
         padding:50,
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     },
     inputContainerStyle:{
       borderBottomWidth:3,
-      borderBottomColor: Colors.black  
+      borderBottomColor: Colors.darkGrey  
     }
 })
 
