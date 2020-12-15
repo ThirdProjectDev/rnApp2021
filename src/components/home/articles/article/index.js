@@ -13,8 +13,10 @@ const ArticleScreen = () => {
                     source={{uri:params.postData.images}}
                     style={{width:'100%', height:200}}
                     PlaceholderContent={<ActivityIndicator/>}
-                />          
-                <ContentShow params={params}/>           
+                />   
+             
+                    <ContentShow params={params}/>  
+                         
             </View>
         </ScrollView>
     )
