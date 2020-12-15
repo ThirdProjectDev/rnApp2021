@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import VideosScreen from '../components/home/videos';
 import VideoScreen from '../components/home/videos/video';
 import HomeScreen from '../components/home/articles';
-import SettingsScreen from "../components/settings"
+import SettingsScreen from "../components/settings/index"
 import ArticleScreen from '../components/home/articles/article'
 
 export const Stack = createStackNavigator();

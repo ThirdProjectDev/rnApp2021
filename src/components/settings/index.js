@@ -4,7 +4,9 @@ import Slider from "@react-native-community/slider"
 import { Picker } from "@react-native-community/picker"
 import {rain1, fire1, fire2, fire3, rain2, rain3, forest1, forest2, forest3} from "../../utils/sounds"
 import * as firebase from "firebase";
-import Ionicons from 'react-native-vector-icons/Ionicons'
+// import ContentShow from '../../utils/contentShow';
+
+// import Ionicons from 'react-native-vector-icons/Ionicons'
 // import {Auth, firebase} from "../../App";
 
 
@@ -269,6 +271,7 @@ class SettingsComponent extends Component {
             /> */}
       <ScrollView style={{ backgroundColor: '#F0F0F0' }}>
         <View>
+        {/* <ContentShow />  */}
             
             <Text h2>
               {/* Your Sounds */}
@@ -292,11 +295,11 @@ class SettingsComponent extends Component {
                 size={15}
                 accessibilityLabel="Button to play rain sound"
                 >
-                <Ionicons 
+                {/* <Ionicons 
                 name="volume-low-outline" 
                 size={25} 
                 color="white"
-              />
+              /> */}
                 </TouchableHighlight>
                 &nbsp;
                 <TouchableHighlight
@@ -306,11 +309,11 @@ class SettingsComponent extends Component {
                 title="stop"
                 accessibilityLabel="Button to stop fire sound"
               >
-                <Ionicons 
+                {/* <Ionicons 
                 name="volume-mute-outline" 
                 size={25} 
                 color="white"
-              />
+              /> */}
               </TouchableHighlight>
             </Text>
             
@@ -335,11 +338,11 @@ class SettingsComponent extends Component {
                 size={15}
                 accessibilityLabel="Button to play forest sound"
                 >
-                <Ionicons 
+                {/* <Ionicons 
                 name="volume-low-outline" 
                 size={25} 
                 color="white"
-              />
+              /> */}
                 </TouchableHighlight>
                 &nbsp;
                 <TouchableHighlight
@@ -349,11 +352,11 @@ class SettingsComponent extends Component {
                 title="stop"
                 accessibilityLabel="Button to stop forest sound"
               >
-                <Ionicons 
+                {/* <Ionicons 
                 name="volume-mute-outline" 
                 size={25} 
                 color="white"
-              />
+              /> */}
               </TouchableHighlight>
             
             </Text>
@@ -377,11 +380,11 @@ class SettingsComponent extends Component {
                 size={15}
                 accessibilityLabel="Button to play fire sound"
                 >
-                <Ionicons 
+                {/* <Ionicons 
                 name="volume-low-outline" 
                 size={25} 
                 color="white"
-              />
+              /> */}
                 </TouchableHighlight>
                 &nbsp;
                 <TouchableHighlight
@@ -391,11 +394,11 @@ class SettingsComponent extends Component {
                 title="stop"
                 accessibilityLabel="Button to stop fire sound"
               >
-                <Ionicons 
+                {/* <Ionicons 
                 name="volume-mute-outline" 
                 size={25} 
                 color="white"
-              />
+              /> */}
               </TouchableHighlight>
             </Text>
             <Picker
@@ -485,3 +488,4 @@ function mapStateToProps(state) {
   }
 }
 export default connect(mapStateToProps)(SettingsComponent)
+

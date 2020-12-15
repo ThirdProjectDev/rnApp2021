@@ -257,7 +257,7 @@ class SettingsComponent extends Component {
         break;
     }
   }
-
+ 
   
   render() {
     return (
@@ -271,7 +271,7 @@ class SettingsComponent extends Component {
             /> */}
       <ScrollView style={{ backgroundColor: '#F0F0F0' }}>
         <View>
-        <ContentShow /> 
+        {/* <ContentShow />  */}
             
             <Text h2>
               {/* Your Sounds */}
