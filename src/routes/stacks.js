@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import VideosScreen from '../components/home/videos';
 import VideoScreen from '../components/home/videos/video';
 import HomeScreen from '../components/home/articles';
+import SettingsScreen from "../components/settings/index"
 import ArticleScreen from '../components/home/articles/article'
 
 export const Stack = createStackNavigator();
@@ -48,6 +49,19 @@ export const VideosStack = () => (
         initialRouteName="Videos_screen"
     >
         <Stack.Screen name="Videos_screen" component={VideosScreen} options={{
+            headerLeft:(props)=> <LeftIcon/>,
+        }}/>
+    </Stack.Navigator>
+)
+
+export const SettingsStack = () => (
+    <Stack.Navigator
+        screenOptions={{
+            ...screenOptions
+        }}
+        initialRouteName="Settings_screen"
+    >
+        <Stack.Screen name="Settings_screen" component={SettingsScreen} options={{
             headerLeft:(props)=> <LeftIcon/>,
         }}/>
     </Stack.Navigator>
