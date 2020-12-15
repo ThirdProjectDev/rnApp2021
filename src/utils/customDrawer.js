@@ -4,8 +4,8 @@ import { View, Text ,StyleSheet} from 'react-native';
 import { Button } from 'react-native-elements';
 import { Colors, LogoText } from './tools';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../store/actions'
-
+import { logoutUser } from '../store/actions';
+import DrawerLogo from './drawerLogo.js';
 
 const SideDrawerCustom = (props) => {
     const dispatch = useDispatch();
@@ -19,9 +19,10 @@ const SideDrawerCustom = (props) => {
     return(
         <DrawerContentScrollView {...props}>
             <View>
-                <LogoText
+                {/* <LogoText
                     style={{fontSize:40,textAlign:'center',color:Colors.black2}}
-                />
+                /> */}
+                <DrawerLogo />
             </View>
             { mainOptions.map((item)=>(
                 <Button
@@ -44,11 +45,10 @@ const SideDrawerCustom = (props) => {
 
 const styles = StyleSheet.create({
     drawerButon:{
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.darkGrey2,
         borderBottomWidth:1,
-        borderBottomColor: Colors.black2,
+        borderBottomColor: Colors.darkGrey,
     }
 })
-
 
 export default SideDrawerCustom;

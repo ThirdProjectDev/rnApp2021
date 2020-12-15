@@ -11,7 +11,7 @@ const Splash = () => (
 const styles = StyleSheet.create({
     contentContainer:{
         flex:1,
-        backgroundColor:Colors.red,
+        backgroundColor:Colors.middleBrown1,
         alignItems:'center',
         justifyContent:'center'
     }
