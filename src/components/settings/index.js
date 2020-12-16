@@ -51,6 +51,9 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 // fire2.setVolume(1)
 // fire3.setVolume(.25)
 
+// const currentUID = firebase.auth().currentUser.uid
+const currentUID = "41hf7p7X3gdUb281N6sMZBFY6Ul2"
+
 class SettingsComponent extends Component {
   state = {
     rain: 'rain1', 
@@ -63,30 +66,42 @@ class SettingsComponent extends Component {
     volumeSettings: [], 
     sliderVol: .25
   }
- 
+  // const currentUID = firebase.auth().currentUser.uid
   //plz work
-  // componentDidMount() {
-    // console.warn(this.state.settings)
+  componentDidMount() {
+    console.warn("settings")
     // currentUID = firebase.auth().currentUser.uid
-
-    // firebase
-    //   .firestore()
-    //   .doc(usersCollection)
-    //   .where('uid', '==', firebase.auth().currentUser.uid)
-    //   .child("rain")
-    //   .once("value", snapshot => {
-    //     const data = snapshot.val()
-    //     if (data) {
-    //       const initSettings = []
-    //       Object
-    //         .keys(data)
-    //         .forEach(setting => initSettings.push(data[setting]));
-    //         this.setState({
-    //           rainSettings: initSettings
-    //         })
-    //     }
-    //   })
-    // }
+    console.warn(currentUID)
+    usersCollection
+      .doc(currentUID)
+      .get()
+      .then(snapshot => {
+        const data = snapshot.data()
+        console.warn(data)
+        if (data) {
+          const initSettings = []
+          Object
+            .keys(data)
+            .forEach(setting => initSettings.push(data[setting]));
+            this.setState({
+              rainSettings: initSettings
+            })
+            console.warn("initSettings", initSettings);
+        }
+        });
+      // .once("value", snapshot => {
+      //   const data = snapshot.val()
+      //   if (data) {
+      //     const initSettings = []
+      //     Object
+      //       .keys(data)
+      //       .forEach(setting => initSettings.push(data[setting]));
+      //       this.setState({
+      //         rainSettings: initSettings
+      //       })
+      //   }
+      // })
+  }
   //     firebase
   //     .database()
   //     .ref()
@@ -187,7 +202,7 @@ class SettingsComponent extends Component {
   // }
 
   saveSettings () {
-    const currentUID = firebase.auth().currentUser.uid
+    // const currentUID = firebase.auth().currentUser.uid
     console.warn(currentUID)
     console.warn(this.state.setting)
     // if (!this.state.setting) return;
@@ -270,13 +285,6 @@ class SettingsComponent extends Component {
   render() {
     return (
         <>
-        {/* <TouchableOpacity
-                key={item.id}
-                onPress={()=> props.navigation.navigate('Article_screen',{
-                    id: item.id,
-                    postData: item
-                })}
-            /> */}
       <ScrollView style={{ backgroundColor: '#F0F0F0' }}>
         <View>
         {/* <ContentShow />  */}
