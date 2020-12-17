@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Slider from "@react-native-community/slider"
 import { Picker } from "@react-native-community/picker"
-import {rain1, fire1, fire2, fire3, rain2, rain3, forest1, forest2, forest3} from "../../utils/sounds"
+import { rain1, fire1, fire2, fire3, rain2, rain3, forest1, forest2, forest3 } from "../../utils/sounds"
 import { firebase, usersCollection, storiesCollection } from "../../firebase";
 // import * as firebase from "firebase";
 // import ContentShow from '../../utils/contentShow';
@@ -17,7 +17,7 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text, 
+  Text,
   StatusBar,
   Image,
   TouchableOpacity,
@@ -52,26 +52,27 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 // fire3.setVolume(.25)
 
 // const currentUID = firebase.auth().currentUser.uid
-const currentUID = "41hf7p7X3gdUb281N6sMZBFY6Ul2"
+// const currentUID = "41hf7p7X3gdUb281N6sMZBFY6Ul2"
 
 class SettingsComponent extends Component {
   state = {
-    rain: 'rain1', 
-    forest: 'forest1',
-    fire: 'fire1',
+    // rain: 'rain1',
+    // forest: 'forest1',
+    // fire: 'fire1',
     rainSettings: [],
-    setting: {fire: 'fire1', rain: 'Rain1', email: firebase.auth().currentUser.email, uid: firebase.auth().currentUser.uid },
+    setting: { fire: 'fire1', forest: 'forest1', rain: 'rain1', email: firebase.auth().currentUser.email, uid: firebase.auth().currentUser.uid },
     fireSettings: [],
     forestSettings: [],
-    volumeSettings: [], 
+    volumeSettings: [],
     sliderVol: .25
   }
+
   // const currentUID = firebase.auth().currentUser.uid
   //plz work
   componentDidMount() {
-    console.warn("settings")
-    // currentUID = firebase.auth().currentUser.uid
-    console.warn(currentUID)
+    // console.warn("settings")
+    const currentUID = firebase.auth().currentUser.uid
+    // console.warn(currentUID)
     usersCollection
       .doc(currentUID)
       .get()
@@ -79,28 +80,29 @@ class SettingsComponent extends Component {
         const data = snapshot.data()
         console.warn(data)
         if (data) {
-          const initSettings = []
-          Object
-            .keys(data)
-            .forEach(setting => initSettings.push(data[setting]));
-            this.setState({
-              rainSettings: initSettings
-            })
-            console.warn("initSettings", initSettings);
+          this.setState({setting: {...setting, fire: data.fire, forest: data.forest, rain: data.rain }})
+          // const initSettings = []
+          // Object
+          //   .keys(data)
+          //   .forEach(setting => initSettings.push(data[setting]));
+          // this.setState({
+          //   rainSettings: initSettings
+          // })
+          // console.warn("initSettings", initSettings);
         }
-        });
-      // .once("value", snapshot => {
-      //   const data = snapshot.val()
-      //   if (data) {
-      //     const initSettings = []
-      //     Object
-      //       .keys(data)
-      //       .forEach(setting => initSettings.push(data[setting]));
-      //       this.setState({
-      //         rainSettings: initSettings
-      //       })
-      //   }
-      // })
+      });
+    // .once("value", snapshot => {
+    //   const data = snapshot.val()
+    //   if (data) {
+    //     const initSettings = []
+    //     Object
+    //       .keys(data)
+    //       .forEach(setting => initSettings.push(data[setting]));
+    //       this.setState({
+    //         rainSettings: initSettings
+    //       })
+    //   }
+    // })
   }
   //     firebase
   //     .database()
@@ -201,19 +203,19 @@ class SettingsComponent extends Component {
 
   // }
 
-  saveSettings () {
-    // const currentUID = firebase.auth().currentUser.uid
-    console.warn(currentUID)
-    console.warn(this.state.setting)
+  saveSettings() {
+    const currentUID = firebase.auth().currentUser.uid
+    // console.warn(currentUID)
+    // console.warn(this.state.setting)
     // if (!this.state.setting) return;
 
     const newSettings = usersCollection.doc(currentUID)
     newSettings.set(this.state.setting)
   }
 
-  playRainSound()  {
-      this.stopRainSound()
-      this.switchSound(this.state.rain, rain1, rain2, rain3, "rain1", "rain2", "rain3");
+  playRainSound() {
+    this.stopRainSound()
+    this.switchSound(this.state.rain, rain1, rain2, rain3, "rain1", "rain2", "rain3");
   }
 
   playForestSound() {
@@ -224,7 +226,7 @@ class SettingsComponent extends Component {
   playFireSound() {
     this.stopFireSound()
     this.switchSound(this.state.fire, fire1, fire2, fire3, "fire1", "fire2", "fire3");
-    console.warn("button runs")
+    // console.warn("button runs")
   }
 
   stopFireSound() {
@@ -240,55 +242,56 @@ class SettingsComponent extends Component {
   }
 
   stopForestSound() {
-    console.warn("is stop?")
+    // console.warn("is stop?")
     forest1.stop()
     forest2.stop()
     forest3.stop()
   }
 
-  switchSound (soundState, sound1, sound2, sound3, value1, value2, value3) {
-  
-    switch(soundState) {
+  switchSound(soundState, sound1, sound2, sound3, value1, value2, value3) {
+
+    switch (soundState) {
       case value1:
         sound1.play().setVolume(this.state.sliderVol);
-        console.warn("this is 1")
+        // console.warn("this is 1")
         break;
       case value2:
         sound2.play().setVolume(this.state.sliderVol);
-        console.warn("this is 2")
+        // console.warn("this is 2")
         break;
       case value3:
         sound3.play().setVolume(this.state.sliderVol);
-        console.warn("this is 3")
+        // console.warn("this is 3")
         break;
       case "Random":
         let FireRandomInteger = Math.floor(Math.random() * 3) + 1
-          switch (FireRandomInteger) {
-            case 1: 
-              sound1.play().setVolume(this.state.sliderVol);
-              break;
-            case 2: 
+        switch (FireRandomInteger) {
+          case 1:
+            sound1.play().setVolume(this.state.sliderVol);
+            break;
+          case 2:
             sound2.play().setVolume(this.state.sliderVol);
-              break;
-            case 3: 
+            break;
+          case 3:
             sound3.play().setVolume(this.state.sliderVol);
-              break;
-            default: 
-              break;
-          }
+            break;
+          default:
+            break;
+        }
       default:
         break;
     }
   }
 
-  
+
   render() {
+    console.warn(this.state)
     return (
-        <>
-      <ScrollView style={{ backgroundColor: '#F0F0F0' }}>
-        <View>
-        {/* <ContentShow />  */}
-            
+      <>
+        <ScrollView style={{ backgroundColor: '#F0F0F0' }}>
+          <View>
+            {/* <ContentShow />  */}
+
             <Text h2>
               {/* Your Sounds */}
               {/* {this.state.rainSettings}
@@ -297,26 +300,26 @@ class SettingsComponent extends Component {
               {this.state.volumeSettings} */}
             </Text>
             <Text
-            style={styles.soundSelection}>Rain&nbsp;
+              style={styles.soundSelection}>Rain&nbsp;
              {/* <TouchableHighlight
                     style={styles.logoutBtn}
                     onPress={()=> this.props.navigation.navigate("Auth")}
                   >
                     <Text style={styles.textStyle}>Log Out</Text>
                   </TouchableHighlight> */}
-            <TouchableHighlight
+              <TouchableHighlight
                 onPress={this.playRainSound.bind(this)}
                 style={styles.playBtns}
                 color="#A36F4C"
                 size={15}
                 accessibilityLabel="Button to play rain sound"
-                >
+              >
                 {/* <Ionicons 
                 name="volume-low-outline" 
                 size={25} 
                 color="white"
               /> */}
-                </TouchableHighlight>
+              </TouchableHighlight>
                 &nbsp;
                 <TouchableHighlight
                 style={styles.stopBtns}
@@ -332,34 +335,33 @@ class SettingsComponent extends Component {
               /> */}
               </TouchableHighlight>
             </Text>
-            
+
             <Picker
-              selectedValue={this.state.rain}
-              style={{height: 50, width: 150}, styles.pickers}
+              selectedValue={this.state.setting.rain}
+              style={{ height: 50, width: 150 }, styles.pickers}
               onValueChange={(itemValue, itemIndex) =>
-              this.setState({rain: itemValue})
-              
-            }>
+                this.setState({setting: {...this.state.setting, rain: itemValue }})
+              }>
               <Picker.Item label="Rain 1" value="rain1" />
               <Picker.Item label="Rain 2" value="rain2" />
               <Picker.Item label="Rain 3" value="rain3" />
               <Picker.Item label="Randomize" value="Random" />
             </Picker>
             <Text
-            style={styles.soundSelection}>Forest&nbsp;
+              style={styles.soundSelection}>Forest&nbsp;
             <TouchableHighlight
                 onPress={this.playForestSound.bind(this)}
                 style={styles.playBtns}
                 color="#A36F4C"
                 size={15}
                 accessibilityLabel="Button to play forest sound"
-                >
+              >
                 {/* <Ionicons 
                 name="volume-low-outline" 
                 size={25} 
                 color="white"
               /> */}
-                </TouchableHighlight>
+              </TouchableHighlight>
                 &nbsp;
                 <TouchableHighlight
                 style={styles.stopBtns}
@@ -374,34 +376,34 @@ class SettingsComponent extends Component {
                 color="white"
               /> */}
               </TouchableHighlight>
-            
+
             </Text>
             <Picker
-              selectedValue={this.state.forest}
-              style={{height: 50, width: 150}, styles.pickers}
+              selectedValue={this.state.setting.forest}
+              style={{ height: 50, width: 150 }, styles.pickers}
               onValueChange={(itemValue, itemIndex) =>
-              this.setState({forest: itemValue})
-            }>
+                this.setState({setting: {...this.state.setting, forest: itemValue }})
+              }>
               <Picker.Item label="Forest 1" value="forest1" />
               <Picker.Item label="Forest 2" value="forest2" />
               <Picker.Item label="Forest 3" value="forest3" />
               <Picker.Item label="Randomize" value="Random" />
             </Picker>
             <Text
-            style={styles.soundSelection}>Fire&nbsp;
+              style={styles.soundSelection}>Fire&nbsp;
               <TouchableHighlight
                 onPress={this.playFireSound.bind(this)}
                 style={styles.playBtns}
                 color="#A36F4C"
                 size={15}
                 accessibilityLabel="Button to play fire sound"
-                >
+              >
                 {/* <Ionicons 
                 name="volume-low-outline" 
                 size={25} 
                 color="white"
               /> */}
-                </TouchableHighlight>
+              </TouchableHighlight>
                 &nbsp;
                 <TouchableHighlight
                 style={styles.stopBtns}
@@ -418,11 +420,12 @@ class SettingsComponent extends Component {
               </TouchableHighlight>
             </Text>
             <Picker
-              selectedValue={this.state.fire}
-              style={{height: 50, width: 150}, styles.pickers}
+              selectedValue={this.state.setting.fire}
+              style={{ height: 50, width: 150 }, styles.pickers}
               onValueChange={(itemValue, itemIndex) =>
-              this.setState({fire: itemValue, setting: itemValue})}
-              >
+                this.setState({setting: {...this.state.setting, fire: itemValue }})
+              }
+            >
               <Picker.Item label="Fire 1" value="fire1" />
               <Picker.Item label="Fire 2" value="fire2" />
               <Picker.Item label="Fire 3" value="fire3" />
@@ -432,46 +435,46 @@ class SettingsComponent extends Component {
               Volume
             </Text>
             <Slider
-              style={{width: 200, height: 40}}
+              style={{ width: 200, height: 40 }}
               maximumValue={1}
               minimumValue={0}
               step={.25}
               value={.5}
-              onValueChange={ itemValue =>
-                this.setState({sliderVol: itemValue})}
+              onValueChange={itemValue =>
+                this.setState({ sliderVol: itemValue })}
             />
 
-<TouchableHighlight
-                style={styles.saveBtn}
-                color="#7C2717"
-                onPress={this.saveSettings.bind(this)}
-                title="stop"
-                accessibilityLabel="Button to stop fire sound"
-              >
-                <Text h2>
-              Save Settings
+            <TouchableHighlight
+              style={styles.saveBtn}
+              color="#7C2717"
+              onPress={this.saveSettings.bind(this)}
+              title="stop"
+              accessibilityLabel="Button to stop fire sound"
+            >
+              <Text h2>
+                Save Settings
             </Text>
-             
-              </TouchableHighlight>
-            
-        {/* <Text>
+
+            </TouchableHighlight>
+
+            {/* <Text>
           Sound Credit to Zapsplat
         </Text> */}
 
-        
-        </View>
-      </ScrollView>
+
+          </View>
+        </ScrollView>
       </>
     );
   }
 }
 const styles = StyleSheet.create({
   pickers: {
-  ...Platform.select({
-    ios: {
-      margin: 1,
-    }
-  })
+    ...Platform.select({
+      ios: {
+        margin: 1,
+      }
+    })
   },
   playBtns: {
     backgroundColor: "#A36F4C",
