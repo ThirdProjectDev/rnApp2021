@@ -32,42 +32,14 @@ import { connect } from 'react-redux';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyC8aDxXuCMwppO6ne9IPSwxuGn-ikFUURE",
-//   authDomain: "alongwithme-22328.firebaseapp.com",
-//   databaseURL: "https://alongwithme-22328.firebaseio.com",
-//   projectId: "alongwithme-22328",
-//   storageBucket: "alongwithme-22328.appspot.com",
-//   messagingSenderId: "455176172872",
-//   appId: "1:455176172872:web:0f95df233b7f92e359ef7d",
-//   measurementId: "G-W2GYKM516W"
-// };
-
-// if(!firebase.apps.length){
-//    firebase.initializeApp(firebaseConfig); 
-// }
-// console.warn(firebase.auth().currentUser)
-// currentUID = firebase.auth().currentUser.uid
-
 //volume control
 rain1.setVolume(50);
 fire1.setVolume(.01)
 fire2.setVolume(1)
 fire3.setVolume(.25)
 
-// if (firebase.auth().currentUser.uid === null) {
-//   const currentUID = "41hf7p7X3gdUb281N6sMZBFY6Ul2"
-// } else {
-//   const currentUID = firebase.auth().currentUser.uid
-// }
-// const currentUID = "fY9hReGb4JOpzRspxem4McnzBHt1"
-const currentUID = firebase.auth().currentUser.uid
-
 class SettingsComponent extends Component {
   state = {
-    // rain: 'rain1',
-    // forest: 'forest1',
-    // fire: 'fire1',
     rainSettings: [],
     setting: { fire: 'fire1', forest: 'forest1', rain: 'rain1', email: firebase.auth().currentUser.email, uid: firebase.auth().currentUser.uid },
     fireSettings: [],
@@ -76,12 +48,8 @@ class SettingsComponent extends Component {
     sliderVol: .25
   }
 
-  // const currentUID = firebase.auth().currentUser.uid
-  //plz work
   componentDidMount() {
-    // console.warn("settings")
-    // const currentUID = firebase.auth().currentUser.uid
-    // console.warn(currentUID)
+    const currentUID = firebase.auth().currentUser.uid
     usersCollection
       .doc(currentUID)
       .get()
@@ -96,81 +64,13 @@ class SettingsComponent extends Component {
 
 
   saveSettings() {
-    const newSettings = usersCollection.doc(currentUID)
+    const newSettings = usersCollection.doc(this.state.setting.uid)
     newSettings.set(this.state.setting)
   }
 
-  // playRainSound(this.state.setting.rain)
-  // playRainSound() {
-  //   this.stopRainSound()
-  //   this.switchSound(this.state.setting.rain, rain1, rain2, rain3, "rain1", "rain2", "rain3");
-  // }
-
-  // playForestSound() {
-  //   this.stopForestSound()
-  //   this.switchSound(this.state.setting.forest, forest1, forest2, forest3, "forest1", "forest2", "forest3");
-
-  // }
-  // playFireSound() {
-  //   this.stopFireSound()
-  //   this.switchSound(this.state.setting.fire, fire1, fire2, fire3, "fire1", "fire2", "fire3");
-  // }
-
-  // stopFireSound() {
-  //   fire2.stop()
-  //   fire1.stop()
-  //   fire3.stop()
-  // }
-
-  // stopRainSound() {
-  //   rain1.stop()
-  //   rain2.stop()
-  //   rain3.stop()
-  // }
-
-  // stopForestSound() {
-  //   forest1.stop()
-  //   forest2.stop()
-  //   forest3.stop()
-  // }
-
-  // switchSound(soundState, sound1, sound2, sound3, value1, value2, value3) {
-  //   switch (soundState) {
-  //     case value1:
-  //       sound1.play().setVolume(this.state.sliderVol);
-  //       console.warn("this is 1")
-  //       break;
-  //     case value2:
-  //       sound2.play().setVolume(this.state.sliderVol);
-  //       // console.warn("this is 2")
-  //       break;
-  //     case value3:
-  //       sound3.play().setVolume(this.state.sliderVol);
-  //       // console.warn("this is 3")
-  //       break;
-  //     case "Random":
-  //       let FireRandomInteger = Math.floor(Math.random() * 3) + 1
-  //       switch (FireRandomInteger) {
-  //         case 1:
-  //           sound1.play().setVolume(this.state.sliderVol);
-  //           break;
-  //         case 2:
-  //           sound2.play().setVolume(this.state.sliderVol);
-  //           break;
-  //         case 3:
-  //           sound3.play().setVolume(this.state.sliderVol);
-  //           break;
-  //         default:
-  //           break;
-  //       }
-  //     default:
-  //       break;
-  //   }
-  // }
-
+  
 
   render() {
-    console.warn(this.state)
     return (
       <>
         <ScrollView style={{ backgroundColor: '#F0F0F0' }}>
