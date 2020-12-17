@@ -4,10 +4,13 @@ import Slider from "@react-native-community/slider"
 import { Picker } from "@react-native-community/picker"
 import { rain1, fire1, fire2, fire3, rain2, rain3, forest1, forest2, forest3 } from "../../utils/sounds"
 import { firebase, usersCollection, storiesCollection } from "../../firebase";
+import { Tile } from 'react-native-elements';
+import { playRainSound, playForestSound, playFireSound, stopFireSound, stopRainSound, stopForestSound} from "../../utils/tools"
+
 // import * as firebase from "firebase";
 // import ContentShow from '../../utils/contentShow';
 
-// import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 // import {Auth, firebase} from "../../App";
 
 
@@ -27,6 +30,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyC8aDxXuCMwppO6ne9IPSwxuGn-ikFUURE",
@@ -46,13 +50,18 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 // currentUID = firebase.auth().currentUser.uid
 
 //volume control
-// rain1.setVolume(50);
-// fire1.setVolume(.01)
-// fire2.setVolume(1)
-// fire3.setVolume(.25)
+rain1.setVolume(50);
+fire1.setVolume(.01)
+fire2.setVolume(1)
+fire3.setVolume(.25)
 
-// const currentUID = firebase.auth().currentUser.uid
-// const currentUID = "41hf7p7X3gdUb281N6sMZBFY6Ul2"
+// if (firebase.auth().currentUser.uid === null) {
+//   const currentUID = "41hf7p7X3gdUb281N6sMZBFY6Ul2"
+// } else {
+//   const currentUID = firebase.auth().currentUser.uid
+// }
+// const currentUID = "fY9hReGb4JOpzRspxem4McnzBHt1"
+const currentUID = firebase.auth().currentUser.uid
 
 class SettingsComponent extends Component {
   state = {
@@ -71,7 +80,7 @@ class SettingsComponent extends Component {
   //plz work
   componentDidMount() {
     // console.warn("settings")
-    const currentUID = firebase.auth().currentUser.uid
+    // const currentUID = firebase.auth().currentUser.uid
     // console.warn(currentUID)
     usersCollection
       .doc(currentUID)
@@ -80,208 +89,84 @@ class SettingsComponent extends Component {
         const data = snapshot.data()
         console.warn(data)
         if (data) {
-          this.setState({setting: {...setting, fire: data.fire, forest: data.forest, rain: data.rain }})
-          // const initSettings = []
-          // Object
-          //   .keys(data)
-          //   .forEach(setting => initSettings.push(data[setting]));
-          // this.setState({
-          //   rainSettings: initSettings
-          // })
-          // console.warn("initSettings", initSettings);
+          this.setState({setting: {email: data.email, uid: data.uid, fire: data.fire, forest: data.forest, rain: data.rain }})
         }
       });
-    // .once("value", snapshot => {
-    //   const data = snapshot.val()
-    //   if (data) {
-    //     const initSettings = []
-    //     Object
-    //       .keys(data)
-    //       .forEach(setting => initSettings.push(data[setting]));
-    //       this.setState({
-    //         rainSettings: initSettings
-    //       })
-    //   }
-    // })
   }
-  //     firebase
-  //     .database()
-  //     .ref()
-  //     .child("rain")
-  //     .on("child_added", snapshot => {
-  //       const data = snapshot.val()
-  //       if (data) {
-  //         this.setState(prevState => ({
-  //           rainSettings: [data, ...prevState.rainSettings]
-  //         }))
-  //       }
-  //     })
-  //     firebase
-  //     .database()
-  //     .ref()
-  //     .child("fire")
-  //     .once("value", snapshot => {
-  //       const data = snapshot.val()
-  //       if (data) {
-  //         const initSettings = []
-  //         Object
-  //           .keys(data)
-  //           .forEach(setting => initSettings.push(data[setting]));
-  //           this.setState({
-  //             fireSettings: initSettings
-  //           })
-  //       }
-  //     })
-  //     firebase
-  //     .database()
-  //     .ref()
-  //     .child("fire")
-  //     .on("child_added", snapshot => {
-  //       const data = snapshot.val()
-  //       if (data) {
-  //         this.setState(prevState => ({
-  //           fireSettings: [data, ...prevState.fireSettings]
-  //         }))
-  //       }
-  //     })
-  //     firebase
-  //     .database()
-  //     .ref()
-  //     .child("forest")
-  //     .once("value", snapshot => {
-  //       const data = snapshot.val()
-  //       if (data) {
-  //         const initSettings = []
-  //         Object
-  //           .keys(data)
-  //           .forEach(setting => initSettings.push(data[setting]));
-  //           this.setState({
-  //             forestSettings: initSettings
-  //           })
-  //       }
-  //     })
-  //     firebase
-  //     .database()
-  //     .ref()
-  //     .child("forest")
-  //     .on("child_added", snapshot => {
-  //       const data = snapshot.val()
-  //       if (data) {
-  //         this.setState(prevState => ({
-  //           forestSettings: [data, ...prevState.forestSettings]
-  //         }))
-  //       }
-  //     })
-  //     firebase
-  //     .database()
-  //     .ref()
-  //     .child("volume")
-  //     .once("value", snapshot => {
-  //       const data = snapshot.val()
-  //       if (data) {
-  //         const initSettings = []
-  //         Object
-  //           .keys(data)
-  //           .forEach(setting => initSettings.push(data[setting]));
-  //           this.setState({
-  //             volumeSettings: initSettings
-  //           })
-  //       }
-  //     })
-  //     firebase
-  //     .database()
-  //     .ref()
-  //     .child("volume")
-  //     .on("child_added", snapshot => {
-  //       const data = snapshot.val()
-  //       if (data) {
-  //         this.setState(prevState => ({
-  //           volumeSettings: [data, ...prevState.volumeSettings]
-  //         }))
-  //       }
-  //     })
 
-  // }
 
   saveSettings() {
-    const currentUID = firebase.auth().currentUser.uid
-    // console.warn(currentUID)
-    // console.warn(this.state.setting)
-    // if (!this.state.setting) return;
-
     const newSettings = usersCollection.doc(currentUID)
     newSettings.set(this.state.setting)
   }
 
-  playRainSound() {
-    this.stopRainSound()
-    this.switchSound(this.state.rain, rain1, rain2, rain3, "rain1", "rain2", "rain3");
-  }
+  // playRainSound(this.state.setting.rain)
+  // playRainSound() {
+  //   this.stopRainSound()
+  //   this.switchSound(this.state.setting.rain, rain1, rain2, rain3, "rain1", "rain2", "rain3");
+  // }
 
-  playForestSound() {
-    this.stopForestSound()
-    this.switchSound(this.state.forest, forest1, forest2, forest3, "forest1", "forest2", "forest3");
+  // playForestSound() {
+  //   this.stopForestSound()
+  //   this.switchSound(this.state.setting.forest, forest1, forest2, forest3, "forest1", "forest2", "forest3");
 
-  }
-  playFireSound() {
-    this.stopFireSound()
-    this.switchSound(this.state.fire, fire1, fire2, fire3, "fire1", "fire2", "fire3");
-    // console.warn("button runs")
-  }
+  // }
+  // playFireSound() {
+  //   this.stopFireSound()
+  //   this.switchSound(this.state.setting.fire, fire1, fire2, fire3, "fire1", "fire2", "fire3");
+  // }
 
-  stopFireSound() {
-    fire2.stop()
-    fire1.stop()
-    fire3.stop()
-  }
+  // stopFireSound() {
+  //   fire2.stop()
+  //   fire1.stop()
+  //   fire3.stop()
+  // }
 
-  stopRainSound() {
-    rain1.stop()
-    rain2.stop()
-    rain3.stop()
-  }
+  // stopRainSound() {
+  //   rain1.stop()
+  //   rain2.stop()
+  //   rain3.stop()
+  // }
 
-  stopForestSound() {
-    // console.warn("is stop?")
-    forest1.stop()
-    forest2.stop()
-    forest3.stop()
-  }
+  // stopForestSound() {
+  //   forest1.stop()
+  //   forest2.stop()
+  //   forest3.stop()
+  // }
 
-  switchSound(soundState, sound1, sound2, sound3, value1, value2, value3) {
-
-    switch (soundState) {
-      case value1:
-        sound1.play().setVolume(this.state.sliderVol);
-        // console.warn("this is 1")
-        break;
-      case value2:
-        sound2.play().setVolume(this.state.sliderVol);
-        // console.warn("this is 2")
-        break;
-      case value3:
-        sound3.play().setVolume(this.state.sliderVol);
-        // console.warn("this is 3")
-        break;
-      case "Random":
-        let FireRandomInteger = Math.floor(Math.random() * 3) + 1
-        switch (FireRandomInteger) {
-          case 1:
-            sound1.play().setVolume(this.state.sliderVol);
-            break;
-          case 2:
-            sound2.play().setVolume(this.state.sliderVol);
-            break;
-          case 3:
-            sound3.play().setVolume(this.state.sliderVol);
-            break;
-          default:
-            break;
-        }
-      default:
-        break;
-    }
-  }
+  // switchSound(soundState, sound1, sound2, sound3, value1, value2, value3) {
+  //   switch (soundState) {
+  //     case value1:
+  //       sound1.play().setVolume(this.state.sliderVol);
+  //       console.warn("this is 1")
+  //       break;
+  //     case value2:
+  //       sound2.play().setVolume(this.state.sliderVol);
+  //       // console.warn("this is 2")
+  //       break;
+  //     case value3:
+  //       sound3.play().setVolume(this.state.sliderVol);
+  //       // console.warn("this is 3")
+  //       break;
+  //     case "Random":
+  //       let FireRandomInteger = Math.floor(Math.random() * 3) + 1
+  //       switch (FireRandomInteger) {
+  //         case 1:
+  //           sound1.play().setVolume(this.state.sliderVol);
+  //           break;
+  //         case 2:
+  //           sound2.play().setVolume(this.state.sliderVol);
+  //           break;
+  //         case 3:
+  //           sound3.play().setVolume(this.state.sliderVol);
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //     default:
+  //       break;
+  //   }
+  // }
 
 
   render() {
@@ -290,17 +175,18 @@ class SettingsComponent extends Component {
       <>
         <ScrollView style={{ backgroundColor: '#F0F0F0' }}>
           <View>
-            {/* <ContentShow />  */}
-
-            <Text h2>
-              {/* Your Sounds */}
-              {/* {this.state.rainSettings}
-              {this.state.fireSettings}
-              {this.state.forestSettings}
-              {this.state.volumeSettings} */}
-            </Text>
             <Text
-              style={styles.soundSelection}>Rain&nbsp;
+              style={styles.title}
+            >
+              Settings
+            </Text>
+            {/* <Tile 
+              icon={{ name:'play-circle',type:'font-awesome',color:'black',size:50}}
+              /> */}
+            <Text
+              style={styles.soundSelection}
+              icon={{ name:'play-circle',type:'font-awesome',color:'black',size:50}}>Rain&nbsp;
+              {/* icon={{ name:'play-circle',type:'font-awesome',color:'#fff',size:50}} */}
              {/* <TouchableHighlight
                     style={styles.logoutBtn}
                     onPress={()=> this.props.navigation.navigate("Auth")}
@@ -308,30 +194,41 @@ class SettingsComponent extends Component {
                     <Text style={styles.textStyle}>Log Out</Text>
                   </TouchableHighlight> */}
               <TouchableHighlight
-                onPress={this.playRainSound.bind(this)}
+                onPress={()=>playRainSound(this.state.setting.rain, this.state.sliderVol)}
                 style={styles.playBtns}
                 color="#A36F4C"
+                icon={{ name:'play-circle',type:'font-awesome',color:'#fff',size:50}}
                 size={15}
+                label={'play'}
                 accessibilityLabel="Button to play rain sound"
               >
+                {/* l */}
+                <Text>
+                  PLAY
+                </Text>
                 {/* <Ionicons 
-                name="volume-low-outline" 
+                name="megaphone-outline" 
                 size={25} 
-                color="white"
+                color="black"
               /> */}
               </TouchableHighlight>
                 &nbsp;
                 <TouchableHighlight
                 style={styles.stopBtns}
                 color="#7C2717"
-                onPress={this.stopRainSound}
+                onPress={()=>stopRainSound()}
                 title="stop"
-                accessibilityLabel="Button to stop fire sound"
+                accessibilityLabel="Button to stop rain sound"
               >
+                <Icon
+                  name="fontawesome|sound"
+                  size={25}
+                  color="red"
+                />
                 {/* <Ionicons 
-                name="volume-mute-outline" 
+                name="rocket" 
                 size={25} 
-                color="white"
+                color="black"
               /> */}
               </TouchableHighlight>
             </Text>
@@ -345,12 +242,12 @@ class SettingsComponent extends Component {
               <Picker.Item label="Rain 1" value="rain1" />
               <Picker.Item label="Rain 2" value="rain2" />
               <Picker.Item label="Rain 3" value="rain3" />
-              <Picker.Item label="Randomize" value="Random" />
+              {/* <Picker.Item label="Randomize" value="Random" /> */}
             </Picker>
             <Text
               style={styles.soundSelection}>Forest&nbsp;
             <TouchableHighlight
-                onPress={this.playForestSound.bind(this)}
+                onPress={()=>playForestSound(this.state.setting.forest, this.state.sliderVol).bind(this)}
                 style={styles.playBtns}
                 color="#A36F4C"
                 size={15}
@@ -366,7 +263,7 @@ class SettingsComponent extends Component {
                 <TouchableHighlight
                 style={styles.stopBtns}
                 color="#7C2717"
-                onPress={this.stopForestSound}
+                onPress={()=>stopForestSound}
                 title="stop"
                 accessibilityLabel="Button to stop forest sound"
               >
@@ -387,12 +284,12 @@ class SettingsComponent extends Component {
               <Picker.Item label="Forest 1" value="forest1" />
               <Picker.Item label="Forest 2" value="forest2" />
               <Picker.Item label="Forest 3" value="forest3" />
-              <Picker.Item label="Randomize" value="Random" />
+              {/* <Picker.Item label="Randomize" value="Random" /> */}
             </Picker>
             <Text
               style={styles.soundSelection}>Fire&nbsp;
               <TouchableHighlight
-                onPress={this.playFireSound.bind(this)}
+                onPress={()=>playFireSound(this.state.setting.fire, this.state.sliderVol).bind(this)}
                 style={styles.playBtns}
                 color="#A36F4C"
                 size={15}
@@ -408,7 +305,7 @@ class SettingsComponent extends Component {
                 <TouchableHighlight
                 style={styles.stopBtns}
                 color="#7C2717"
-                onPress={this.stopFireSound}
+                onPress={()=>stopFireSound}
                 title="stop"
                 accessibilityLabel="Button to stop fire sound"
               >
@@ -429,7 +326,7 @@ class SettingsComponent extends Component {
               <Picker.Item label="Fire 1" value="fire1" />
               <Picker.Item label="Fire 2" value="fire2" />
               <Picker.Item label="Fire 3" value="fire3" />
-              <Picker.Item label="Randomize" value="Random" />
+              {/* <Picker.Item label="Randomize" value="Random" /> */}
             </Picker>
             <Text h2>
               Volume
@@ -497,7 +394,9 @@ const styles = StyleSheet.create({
   },
   soundSelection: {
     fontSize: 40,
-
+  },
+  title: {
+    fontSize: 60,
   }
 });
 function mapStateToProps(state) {

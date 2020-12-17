@@ -10,6 +10,9 @@ export const registerUser = async ({ email, password }) => {
     const userProfile = {
       uid: user.uid,
       email: email,
+      rain: 'rain1',
+      fire: 'fire1',
+      forest: 'forest1'
     };
     await usersCollection.doc(user.uid).set(userProfile);
     return { isAuth: true, user: userProfile };
