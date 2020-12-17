@@ -60,7 +60,8 @@ fire3.setVolume(.25)
 // } else {
 //   const currentUID = firebase.auth().currentUser.uid
 // }
-const currentUID = "fY9hReGb4JOpzRspxem4McnzBHt1"
+// const currentUID = "fY9hReGb4JOpzRspxem4McnzBHt1"
+const currentUID = firebase.auth().currentUser.uid
 
 class SettingsComponent extends Component {
   state = {
