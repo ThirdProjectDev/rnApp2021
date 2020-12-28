@@ -69,15 +69,12 @@ export const switchSound = (soundState, sliderVol, sound1, sound2, sound3, value
     switch (soundState) {
         case value1:
           sound1.play().setVolume(sliderVol);
-        //   console.warn("this is 1")
           break;
         case value2:
           sound2.play().setVolume(sliderVol);
-          // console.warn("this is 2")
           break;
         case value3:
           sound3.play().setVolume(sliderVol);
-          // console.warn("this is 3")
           break;
         case "Random":
           let FireRandomInteger = Math.floor(Math.random() * 3) + 1
