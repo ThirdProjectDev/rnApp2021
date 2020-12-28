@@ -9,18 +9,28 @@ const VideosScreen = ({navigation}) => {
     const FAQ  = [
         {
             id: 1,
-            title: "How does this App work?",
-            body: "We have a selection of excertps from various stories, and when navigating to these excerpts you can click on a highlighted word to play an associated sound."
+            title: "About the Developers",
+            body: "Hello! We're Third Project Development, a small four person team made up of web-developers. If you have any questions, please feel free to shoot us an email!\n\nEmail: ThirdProjectDev@gmail.com\nWebsite: https://tiiedye.github.io/ThirdProjectDev"
         },
         {
             id: 2,
+            title: "How does this App work?",
+            body: "We have a selection of excerpts from various stories, and when navigating to these excerpts you can click on a highlighted word to play an associated sound."
+        },
+        {
+            id: 3,
             title: "What is the purpose of this App?",
             body: "This app is a demo of a potential read-along app. We hope to continue to improve upon our idea until it is a fully-fledged app."
         },
         {
-            id: 3,
+            id: 4,
             title: "Can I upload my own stories?",
             body: "Currently you cannot upload your own story/excerpt."
+        },
+        {
+            id: 5,
+            title: "Can I change the highligher color?",
+            body: "We hope to add this as a feature in the future."
         }
     ]
 

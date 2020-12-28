@@ -12,7 +12,7 @@ const SideDrawerCustom = (props) => {
     const mainOptions = [
         { title:'Stories',location:"Home" },
         { title:'FAQ',location:"Videos" },
-        { title:'Profile',location:"Profile" },
+        // { title:'Profile',location:"Profile" },
         { title:'Settings',location:"Settings" }
     ]
 
