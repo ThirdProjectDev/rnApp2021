@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Highlighter from 'react-native-highlight-words';
 import { firebase, usersCollection } from "../firebase";
+import { playRainSound, playForestSound, playFireSound } from "./tools"
+import { rain1, fire1, fire2, fire3, rain2, rain3, forest1, forest2, forest3 } from "./sounds"
 
+const currentUID = firebase.auth().currentUser.uid
 
 class ContentShow extends Component {
     state = {
@@ -10,22 +13,33 @@ class ContentShow extends Component {
         fireSound: "",
         forestSound: "",
         wordsToSearch: [/\b\Fire\b/gi, /\b\Rain\b/gi, /\b\Forest\b/gi],
-        currentUID: firebase.auth().currentUser.uid
+        currentUID: firebase.auth().currentUser.uid,
+        volume: 0
     }
-
     componentDidMount() {
         usersCollection
             .doc(this.state.currentUID)
             .get()
             .then(snapshot => {
                 const data = snapshot.data()
-                this.setState({ rainSound: data.rain, fireSound: data.fire, forestSound: data.forest })
+                this.setState({ rainSound: data.rain, fireSound: data.fire, forestSound: data.forest, volume: data.volume })
             })
+        console.warn(this.state.fireSound)
     }
 
     selectSound() {
         console.warn(this.children)
-        // if regexp.match(word) === word {do this } 
+        usersCollection
+            .doc(currentUID)
+            .get()
+            .then(snapshot => {
+                const data = snapshot.data()
+                this.children === 'fire' ? playFireSound(data.fire, data.volume)
+                    : this.children === 'rain' ? playRainSound(data.rain, data.volume)
+                        : this.children === 'forest' ? playForestSound(data.forest, data.volume)
+                            : console.warn("No sound associated with this word")
+            })
+
     }
 
     stopTheNoise = () => {
