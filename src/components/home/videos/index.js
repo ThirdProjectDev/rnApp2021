@@ -35,19 +35,6 @@ const VideosScreen = ({navigation}) => {
     ]
 
     const renderFAQ = () => (
-        // <Tile
-        //     imageSrc={{uri:'https://picsum.photos/200/300'}}
-        //     title='Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-        //     icon={{ name:'play-circle',type:'font-awesome',color:'#fff',size:50}}
-        //     contentContainerStyle={styles.contentContainerStyle}
-        //     containerStyle={styles.containerStyle}
-        //     titleStyle={{fontSize:15}}
-        //     onPress={()=> navigation.navigate('VideoScreen',{
-        //         id:'hsdvhsjdv',
-        //         postData:{}
-        //     })}
-        // />
-
         FAQ.map((item)=>(
             <Card key={item.id}>
                 <Card.Title style={styles.cardTitle}>
@@ -69,10 +56,6 @@ const VideosScreen = ({navigation}) => {
             <View style={{padding:20}}>
                 {renderFAQ()}
             </View>
-            {/* <Button
-                title="see article"
-                onPress={()=> navigation.navigate('Video_screen')}
-            /> */}
         </ScrollView>
     )
 }
