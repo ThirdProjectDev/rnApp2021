@@ -7,7 +7,7 @@
 
 <img src="./src/assets/images/homepage.png"
      alt="Log-in Page"
-     style="margin-right: 10px; height: 5px;"/>
+     height= '190'/>
 
 
 ## Description
@@ -141,8 +141,8 @@ Contributors allowed, please reach out to admin if interested.
 
 ### Vinne Lopez
 
-<img src="./src/assets/images/VINNIE.JPG"
-     alt="Picture of Developer Anna with a book"
+<img src="./src/assets/images/vinnie.JPG"
+     alt="Picture of Developer Vinnie"
      style="margin-right: 10px; height: 200px;" />
 
 * Github username: vinnielo
