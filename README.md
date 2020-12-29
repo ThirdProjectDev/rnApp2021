@@ -5,7 +5,7 @@
 [![made-with-VSCode](https://img.shields.io/badge/Made%20with-VSCode-1f425f.svg)](https://code.visualstudio.com/)
 # Along With Me
 
-<img src="./AlongWithMeApp/src/assets/images/homepage.png"
+<img src="./src/assets/images/homepage.png"
      alt="Log-in Page"
      style="margin-right: 10px; height: 5px;"/>
 
@@ -13,11 +13,6 @@
 ## Description
 Read along with me! Listen along with me! Adventure along with me! This audiobook companion app takes the text of your audiobook and 'listens' for specific words for background noise. Really transport yourself! When our application registers the word 'fire' hear a crackling fireplace. Set the specific sounds you want to hear and the volume in the settings.
 
-
-
-<img src="./AlongWithMeApp/src/assets/images/pikachuconstruction.gif"
-     alt="Pikachu construction sign"
-     style="margin-right: 10px; height: 100px;" />
 
 ## Table of Contents
 * [Installation](#installation)
@@ -98,8 +93,8 @@ In react-native-highlight-words index.js, copy and paste this code:
 Also to run this application, some lines must be commented out in Android/app/src/main/java/MainApplication.java:
 * lines 37 - 41
 
-You run this application in terminal or bash with npx react-native start. To start the android application run npx react-native run-android.
-To start the ios application run npx react-native run-ios
+You run this application in terminal or bash with npx react-native start. To start the android application run 'npm run android'.
+To start the ios application run 'npm run ios'
 
 ## License
 MIT
@@ -108,7 +103,7 @@ MIT
 Contributors allowed, please reach out to admin if interested.
 
 ## Links
-* GitHub repository URL: https://github.com/eh4git/Along-With-Me
+* GitHub repository URL: https://github.com/ThirdProjectDev/rnApp2021
 
 
 ## Technologies
@@ -123,7 +118,8 @@ Contributors allowed, please reach out to admin if interested.
 ### Dependencies
 
 * react-native-sound
-* react-native-voice
+* firebase
+
 
 
 ## Icebox
@@ -132,13 +128,10 @@ Contributors allowed, please reach out to admin if interested.
 
 
 
-## Developers
+## Third Project Development Team
 
 ### Anna Conover
-<!-- <img src="./AlongWithMeApp/src/assets/images/homepage.png" -->
-<img src="./AlongWithMeApp/src/assets/images/AnnaBook.png"
-     alt="Picture of Developer Anna with a book"
-     style="margin-right: 10px; height: 200px;" />
+![anna Github Profile Picture](https://github.com/annaxgrace.png?size=200)
 
 * Github username: annaxgrace
 * Email: anna.grace.conover@gmail.com
@@ -148,9 +141,9 @@ Contributors allowed, please reach out to admin if interested.
 
 ### Vinne Lopez
 
-<!-- <img src="./client/src/images/teamVinnie.png"
-     alt="Picture of Developer Vinnie's character in game"
-     style="margin-right: 10px; height: 200px;" /> -->
+<img src="./src/assets/images/VINNIE.JPG"
+     alt="Picture of Developer Anna with a book"
+     style="margin-right: 10px; height: 200px;" />
 
 * Github username: vinnielo
 * Email: vinnielo01@gmail.com
@@ -160,9 +153,7 @@ Contributors allowed, please reach out to admin if interested.
 
 ### Julia "Jace" Clements
 
-<!-- <img src="./client/src/images/teamJace.png"
-     alt="Picture of Developer Jace in game"
-     style="margin-right: 10px; height: 200px;" /> -->
+![jace Github Profile Picture](https://github.com/tiiedye.png?size=200)
 
 * Github username: tiiedye
 * Email: tiiedye@gmail.com
@@ -171,14 +162,14 @@ Contributors allowed, please reach out to admin if interested.
 
 ### Erik Hirsch
 
-<!-- <img src="./client/src/images/teamErik.png"
-     alt="Picture of Developer Erik in game"
-     style=" margin-right: 10px; height: 200px;" /> -->
+![eh4git Github Profile Picture](https://github.com/eh4git.png?size=200)
 
 * Github username: eh4git
 * Email: ehirsch760@gmail.com
 * GitHub Profile URL: https://github.com/eh4git
 
-## Credits to ZapSplat for sounds
+
+## Third Project Development: https://tiiedye.github.io/ThirdProjectDev/
+### Credits to ZapSplat for sounds
 
 
