@@ -1,21 +1,18 @@
 import 'react-native-gesture-handler';
 import React,{ Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { connect } from 'react-redux';
 import {autoSignIn} from './store/actions';
 
-import { StyleSheet, Text, View } from 'react-native';
 import SideDrawerCustom from './utils/customDrawer';
 import { Colors } from './utils/tools';
 
 const Drawer = createDrawerNavigator();
 
-import { Stack, HomeStack, VideosStack, screenOptions, SettingsStack } from './routes/stacks';
+import { Stack, HomeStack, FAQStack, screenOptions, SettingsStack } from './routes/stacks';
 import AuthScreen from './components/auth';
 import ProfileScreen from './components/user/profile/profile';
-import VideoScreen from './components/home/videos/video';
 import SettingsScreen from './components/settings/index';
 import Splash from './components/auth/splash';
 
@@ -25,7 +22,7 @@ const MainDrawer = () => (
     drawerStyle={{backgroundColor: Colors.darkGrey2}}
   >
     <Drawer.Screen name="Home" component={HomeStack}/>
-    <Drawer.Screen name="Videos" component={VideosStack}/>
+    <Drawer.Screen name="FAQ" component={FAQStack}/>
     <Drawer.Screen name="Profile" component={ProfileScreen}/>
     <Drawer.Screen name="Settings" component={SettingsStack}/>
   </Drawer.Navigator>
@@ -33,14 +30,14 @@ const MainDrawer = () => (
 
 class App extends Component{
   state = {
-    loading: false
+    loading: true
   }
 
   componentDidMount(){
     this.props.dispatch(autoSignIn())
-      // .then(()=>{
-      // this.setState({loading:false})
-      // })
+      .then(()=>{
+      this.setState({loading:false})
+      })
   }
 
 
@@ -54,14 +51,6 @@ class App extends Component{
                 name="Main"
                 component={ MainDrawer }
                 options={{ headerShown:false}}
-              />
-              <Stack.Screen 
-                name="VideoScreen" 
-                component={ VideoScreen }
-                options={{
-                  ...screenOptions,
-                  headerBackTitleVisible:false
-                }}
               />
               <Stack.Screen 
                 name="SettingsScreen" 

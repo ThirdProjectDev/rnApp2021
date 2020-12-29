@@ -1,4 +1,7 @@
-import React,{ useState } from 'react';
+//currently not in use, to be used to update user's info
+
+
+import React from 'react';
 import { View } from 'react-native';
 import { TextInput, Button, Title }from 'react-native-paper';
 import { Formik } from 'formik';

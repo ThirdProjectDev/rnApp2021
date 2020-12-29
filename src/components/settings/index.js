@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import Slider from "@react-native-community/slider";
 import { Picker } from "@react-native-community/picker";
-import {
-  rain1,
-  fire1,
-  fire2,
-  fire3,
-  rain2,
-  rain3,
-  forest1,
-  forest2,
-  forest3,
-} from "../../utils/sounds";
-import { firebase, usersCollection, storiesCollection } from "../../firebase";
+import { firebase, usersCollection } from "../../firebase";
 import {
   showToast,
   playRainSound,
@@ -28,13 +17,7 @@ import StopImage from "../../utils/stopImage";
 import { StyleSheet, ScrollView, View, Text, Platform } from "react-native";
 import { connect } from "react-redux";
 import { TouchableHighlight } from "react-native-gesture-handler";
-import { ThemeConsumer } from "react-native-elements";
 
-// //volume control
-// rain1.setVolume(50);
-// fire1.setVolume(0.01);
-// fire2.setVolume(1);
-// fire3.setVolume(0.25);
 
 class SettingsComponent extends Component {
   state = {
