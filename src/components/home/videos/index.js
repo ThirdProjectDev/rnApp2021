@@ -29,7 +29,7 @@ const VideosScreen = ({navigation}) => {
         },
         {
             id: 5,
-            title: "Can I change the highligher color?",
+            title: "Can I change the highlighter color?",
             body: "We hope to add this as a feature in the future."
         }
     ]

@@ -5,8 +5,6 @@ import { firebase, usersCollection } from "../firebase";
 import { playRainSound, playForestSound, playFireSound } from "./tools"
 import { rain1, fire1, fire2, fire3, rain2, rain3, forest1, forest2, forest3 } from "./sounds"
 
-const currentUID = firebase.auth().currentUser.uid
-
 class ContentShow extends Component {
     state = {
         rainSound: "",
@@ -18,17 +16,24 @@ class ContentShow extends Component {
     }
     componentDidMount() {
         usersCollection
-            .doc(this.state.currentUID)
-            .get()
-            .then(snapshot => {
-                const data = snapshot.data()
-                this.setState({ rainSound: data.rain, fireSound: data.fire, forestSound: data.forest, volume: data.volume })
+        .doc(this.state.currentUID)
+        .get()
+        .then(snapshot => {
+            const data = snapshot.data()
+                this.setState({ 
+                    rainSound: data.rain, 
+                    fireSound: data.fire, 
+                    forestSound: data.forest, 
+                    volume: data.volume, 
+                    currentUID: data.uid 
+                })
             })
-        console.warn(this.state.fireSound)
-    }
-
-    selectSound() {
-        console.warn(this.children)
+        }
+        
+        selectSound() {
+            //inside of selectSound this refers to the element that is being clicked on not to ContentShow
+            // console.warn(this)
+        const currentUID = firebase.auth().currentUser.uid
         usersCollection
             .doc(currentUID)
             .get()
@@ -66,7 +71,7 @@ class ContentShow extends Component {
                             highlightStyle={{ backgroundColor: 'yellow' }}
                             searchWords={this.state.wordsToSearch}
                             textToHighlight={this.props.params.postData.content.replace(/<p>/g, "").replace(/<\/p>/g, "\n\n")}
-                            onPressHighlightedText={this.selectSound}
+                            onPressHighlightedText={(this.selectSound)}
                             onPressNormalText={() => this.stopTheNoise()}
                         />
                     </Text>
