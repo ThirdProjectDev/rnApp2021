@@ -222,8 +222,6 @@ class SettingsComponent extends Component {
             </TouchableHighlight>
 
             {/* <Text
-              // style={{ display: this.state.alertMessage}}
-              // style={{ display: 'inline'}}
             >
           Sound Credit to Zapsplat
         </Text> */}
