@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
+import { View, ScrollView, ActivityIndicator } from 'react-native';
 import { Image } from 'react-native-elements'
 import ContentShow from '../../../../utils/contentShow';
 import { useRoute } from '@react-navigation/native';

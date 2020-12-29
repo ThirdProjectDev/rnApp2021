@@ -6,8 +6,7 @@ import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
 
-import VideosScreen from '../components/home/videos';
-import VideoScreen from '../components/home/videos/video';
+import FAQScreen from '../components/home/FAQ/index';
 import HomeScreen from '../components/home/articles';
 import SettingsScreen from "../components/settings/index"
 import ArticleScreen from '../components/home/articles/article'
@@ -41,14 +40,14 @@ export const screenOptions = {
     headerTitle:()=> <LogoText style={{fontSize:25}}/>
 }
 
-export const VideosStack = () => (
+export const FAQStack = () => (
     <Stack.Navigator
         screenOptions={{
             ...screenOptions
         }}
-        initialRouteName="Videos_screen"
+        initialRouteName="FAQ_screen"
     >
-        <Stack.Screen name="Videos_screen" component={VideosScreen} options={{
+        <Stack.Screen name="FAQ_screen" component={FAQScreen} options={{
             headerLeft:(props)=> <LeftIcon/>,
         }}/>
     </Stack.Navigator>
