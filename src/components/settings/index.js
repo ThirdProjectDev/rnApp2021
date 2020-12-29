@@ -202,7 +202,7 @@ class SettingsComponent extends Component {
               maximumValue={1}
               minimumValue={0}
               step={0.25}
-              value={0.5}
+              value={this.state.setting.volume}
               onValueChange={(itemValue) =>
                 this.setState({ setting: {...this.state.setting, volume: itemValue }, })
               }
