@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux'
 import promiseMiddleware from 'redux-promise';
 import reducers from './src/store/reducers';
-import { DarkTheme ,Provider as PaperProvider } from 'react-native-paper';
+import { Provider as PaperProvider } from 'react-native-paper';
 import Toast from 'react-native-toast-message';
 import {View,Text} from 'react-native';
 

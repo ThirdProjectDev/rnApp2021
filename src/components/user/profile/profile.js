@@ -1,3 +1,5 @@
+//currently not in use, to be used to update user's info
+
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Appbar, TextInput, Divider, Button, Title }from 'react-native-paper'

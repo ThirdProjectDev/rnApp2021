@@ -7,7 +7,7 @@ import { registerUser, loginUser,clearAuthError } from '../../store/actions';
 import { useFocusEffect } from '@react-navigation/native'
 
 import { Input, Button } from 'react-native-elements';
-import {LogoText, Colors, showToast } from '../../utils/tools';
+import {Colors, showToast } from '../../utils/tools';
 import Logo from "./Logo";
 
 const AuthScreen = () => {
@@ -54,7 +54,7 @@ const AuthScreen = () => {
                         .required('The email is required'),
                         password:Yup.string()
                         .max(20,'Must be 10 or less')
-                        .required('The lastname is required')
+                        .required('The password is required')
                     })}
                     onSubmit={ values => handleSubmit(values)}
                 >

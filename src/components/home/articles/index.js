@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Card } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStories,getMoreStories } from '../../../store/actions';
+import { getStories, getMoreStories } from '../../../store/actions';
  
 const HomeScreen = ({navigation}) => {
     const [loadingMore,setLoadingMore] = useState(false);
