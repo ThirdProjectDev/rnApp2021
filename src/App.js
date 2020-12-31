@@ -30,7 +30,7 @@ const MainDrawer = () => (
 
 class App extends Component{
   state = {
-    loading: true
+    loading: false
   }
 
   componentDidMount(){
