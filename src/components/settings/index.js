@@ -214,6 +214,7 @@ class SettingsComponent extends Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   pickers: {
     ...Platform.select({
