@@ -65,6 +65,8 @@ web-build/
 
 /android/java_pid10492.hprof
 
+*.hprof
+
 *.apk
 *.aar
 *.ap_
