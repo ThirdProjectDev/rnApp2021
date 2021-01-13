@@ -64,3 +64,8 @@ buck-out/
 web-build/
 
 /android/java_pid10492.hprof
+
+*.apk
+*.aar
+*.ap_
+*.aab
