@@ -20,7 +20,7 @@ const SideDrawerCustom = (props) => {
         // { title:'Profile',location:"Profile" },
         { title:'Settings',location:"Settings" }
     ]
-    stopFireSound();
+    stopFireSound(); 
     stopRainSound();
     stopForestSound();
 
