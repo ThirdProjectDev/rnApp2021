@@ -143,7 +143,7 @@ Contributors allowed, please reach out to admin if interested.
 
 <img src="./src/assets/images/vinnie.JPG"
      alt="Picture of Developer Vinnie"
-     style="margin-right: 10px; height: 200px;" />
+     height= "200" />
 
 * Github username: vinnielo
 * Email: vinnielo01@gmail.com

@@ -6,6 +6,11 @@ import { Colors } from './tools';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../store/actions';
 import DrawerLogo from './drawerLogo.js';
+import {
+    stopFireSound,
+    stopRainSound,
+    stopForestSound,
+  } from "./tools";
 
 const SideDrawerCustom = (props) => {
     const dispatch = useDispatch();
@@ -15,6 +20,9 @@ const SideDrawerCustom = (props) => {
         // { title:'Profile',location:"Profile" },
         { title:'Settings',location:"Settings" }
     ]
+    stopFireSound();
+    stopRainSound();
+    stopForestSound();
 
     return(
         <DrawerContentScrollView {...props}>
