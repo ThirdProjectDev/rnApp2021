@@ -11,7 +11,7 @@
 
 
 ## Description
-Read along with me! Listen along with me! Adventure along with me! This audiobook companion app takes the text of your audiobook and 'listens' for specific words for background noise. Really transport yourself! When our application registers the word 'fire' hear a crackling fireplace. Set the specific sounds you want to hear and the volume in the settings.
+Read along with me! Listen along with me! Adventure along with me! This audiobook companion app takes the text of your audiobook and lets you select specific words for background noise. Really transport yourself! When our application registers the word 'fire' click to hear a crackling fireplace. Set the specific sounds you want to hear and the volume in the settings.
 
 
 ## Table of Contents

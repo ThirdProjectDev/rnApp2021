@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linking } from 'react-native';
 import { View, Text, Button, ScrollView, ActivityIndicator,StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
 
@@ -8,7 +9,7 @@ const FAQScreen = ({navigation}) => {
         {
             id: 1,
             title: "About the Developers",
-            body: "Hello! We're Third Project Development, a small four person team made up of web-developers. If you have any questions, please feel free to shoot us an email!\n\nEmail: ThirdProjectDev@gmail.com\nWebsite: https://tiiedye.github.io/ThirdProjectDev"
+            body: <><Text style={{color: 'gray'}}> Hello! We're Third Project Development, a small four person team made up of web-developers. If you have any questions, please feel free to shoot us an email! {"\n"}{"\n"} Email: ThirdProjectDev@gmail.com{"\n"}{"\n"} Checkout out our </Text> <Text style={{color: '#1E90FF'}}onPress={() => Linking.openURL('https://tiiedye.github.io/ThirdProjectDev')}>website!</Text></>
         },
         {
             id: 2,

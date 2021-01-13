@@ -38,7 +38,6 @@ class SettingsComponent extends Component {
       .get()
       .then((snapshot) => {
         const data = snapshot.data();
-        console.warn(data);
         if (data) {
           this.setState({
             setting: {
