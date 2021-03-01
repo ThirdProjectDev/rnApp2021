@@ -104,6 +104,7 @@ Contributors allowed, please reach out to admin if interested.
 
 ## Links
 * GitHub repository URL: https://github.com/ThirdProjectDev/rnApp2021
+* Available to download on the Google Play Store: https://play.google.com/store/apps/details?id=com.rnapp2021
 
 
 ## Technologies
